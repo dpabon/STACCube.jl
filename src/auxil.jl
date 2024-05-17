@@ -17,5 +17,6 @@ end
 "Take the URI of a STAC.Asset and add the token to it as query parameters."
 function signed_uri(asset::STAC.Asset, token::AbstractString)
     base_url = href(asset)
-    return string(base_url, '?', token)
+    uri = isempty(token) ? base_url : string(base_url, '?', token)
+    return uri
 end
